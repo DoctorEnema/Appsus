@@ -1,5 +1,5 @@
 import { bookService } from '../services/book-service.js';
-import { eventBus } from '../services/event-bus-service.js'
+import { eventBus } from '../../services/event-bus-service.js'
 import bookList from '../cmps/book-list.js'
 import bookDetails from './book-details.js'
 

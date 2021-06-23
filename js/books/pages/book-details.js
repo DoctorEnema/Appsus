@@ -1,12 +1,10 @@
 import { bookService } from '../services/book-service.js'
-import { eventBus } from '../services/event-bus-service.js'
+import { eventBus } from '../../services/event-bus-service.js'
 
 export default {
-    // props: ['book'],
     template: `
     <section v-if="book" class="book-details">
-        <!-- <button @click="$emit('close')" class="close">X</button> -->
-        <button class="close"><router-link :to="'/book'">X</router-link></button>
+        <button class="close"><router-link :to="'/books'">X</router-link></button>
         <div class="book-details-main">
             <div class="image">
                 <img :src="book.thumbnail">

@@ -1,9 +1,10 @@
 import homePage from './pages/home-page.js';
 import aboutPage from './pages/about-page.js';
-import notesApp from '../notes/pages/notes-app.js';
-import emailApp from '../email/pages/email.js';
-import booksApp from '../books/js/pages/book-app.js';
-import searchBooks from '../books/js/pages/search-books.js';
+import notesApp from './notes/pages/notes-app.js';
+import emailApp from './email/pages/email.js';
+import booksApp from './books/pages/book-app.js'
+import searchBooks from './books/pages/search-books.js';
+import bookDetails from './books/pages/book-details.js';
 
 const routes = [
     {
@@ -25,10 +26,15 @@ const routes = [
     {
         path: '/books',
         component: booksApp
-    }, {
+    },
+    {
         path: '/books/search',
         component: searchBooks
-    }
+    },
+    {
+        path: '/books/:bookId',
+        component: bookDetails,
+    },
 ]
 
 export const router = new VueRouter({ routes });
