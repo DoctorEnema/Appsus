@@ -6,7 +6,7 @@ body {
     margin: 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, p {
     margin: 0;
     padding: 0;
 }
@@ -47,3 +47,53 @@ footer {
     background-color: khaki;
     flex: 1;
 }
+
+.note-preview input[type=text]{
+    border: none;
+    background-color: transparent;
+    font-size: 1.5em;
+    font-family: cursive;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    font-weight: 800;
+}
+
+
+.note-preview{
+    min-height: 15rem;
+    background-color: cornsilk;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 0.2rem;
+    font-family: cursive;
+}
+
+.note-preview iframe{
+    object-fit: contain;
+    width: 95%;
+    justify-self: center;
+    margin: 0.3rem;
+}
+
+.note-preview img{
+    object-fit: contain;
+    width: 90%;
+    justify-self: center;
+    margin: 0.3rem;
+}
+
+.notes-list ul{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+}
+
+textarea{
+    background-color: transparent;
+    font-size: 1em;
+    font-family: cursive;
+    padding: 0;
+    border: none;
+}
+

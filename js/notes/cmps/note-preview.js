@@ -12,11 +12,7 @@ export default {
         noteVideo,
     },
     template: `
-        <section>
-            <div>
-                <component :note="note" :is=noteType></component>
-            </div>
-        </section>
+                <component class="note-preview" :note="note" :is=noteType></component>
     `,
     data() {
         return {

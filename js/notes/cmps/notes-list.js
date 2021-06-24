@@ -6,7 +6,7 @@ export default {
         notePreview
     },
     template: `
-        <section>
+        <section class="notes-list">
             <ul>
                 <li v-for="note in notes">
                     <note-preview :note="note" />

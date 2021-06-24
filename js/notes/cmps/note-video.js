@@ -2,14 +2,8 @@ export default {
     props: ['note'],
     template: `
         <section>
-            <div>
-                {{note.info.title}}
-                <iframe :src="note.info.url"></iframe>
-                
-            </div>
+            <h2>{{note.info.title}}</h2>
+            <iframe :src="note.info.url"></iframe>
         </section>
     `,
-    computed: {
-
-    }
 }
