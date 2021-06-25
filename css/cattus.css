@@ -97,3 +97,6 @@ textarea{
     border: none;
 }
 
+.done-todo{
+    text-decoration: line-through;
+}

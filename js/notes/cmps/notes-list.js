@@ -8,7 +8,7 @@ export default {
     template: `
         <section class="notes-list">
             <ul>
-                <li v-for="note in notes">
+                <li v-for="note in notes" :key="note.id">
                     <note-preview :note="note" />
                 </li>
             </ul>
