@@ -1,28 +1,27 @@
 import emailFilter from '../cmps/email-filter.js'
 import emailFolders from '../cmps/email-folders.js'
 import emailCompose from '../cmps/email-compose.js'
-import {emailService} from '../services/email-service.js'
-import {eventBus} from '../../services/event-bus-service.js'
+import { emailService } from '../services/email-service.js'
+import { eventBus } from '../../services/event-bus-service.js'
 import emailList from '../cmps/email-list.js'
 
 export default {
     name: 'email-app',
-    template: `<section class="app-page">
+    template: `
+    <section>
         <email-filter @filterSet="setFilter" @sortSet="setSort"/>
         <div class="main-email-container"> 
-        <aside class="email-aside">
-            <button class="compose-email-btn" @click="isComposing = !isComposing"><i :class="'ass'">Compose</i></button>
-            <email-folders :emails="emails"/>
-        </aside>
+            <aside class="email-aside">
+                <button class="compose-email-btn" @click="isComposing = !isComposing"><i :class="'ass'">Compose</i></button>
+                <email-folders :emails="emails"/>
+            </aside>
         <router-view :to="'/email'" @replayEmailSet="setReplyEmail" @emailRead="markAsRead" :emails="emailsToDisplay"/>
-    </div>
-    <transition name="height">
+        </div>
         <div v-if="isComposing">
             <email-compose @emailSaved="saveEmail" @composeClosed="closeCompose" :replayEmail="replayEmail" :note="note"/>
         </div>
-    </transition> 
-    <email-list :emails="emails"></email-list>
-        </section> `,
+        <!-- <email-list :emails="emailsToDisplay"></email-list> -->
+    </section> `,
     data() {
         return {
             emails: [],
@@ -42,6 +41,7 @@ export default {
         },
         setFilter(filter) {
             this.filterBy = filter;
+            console.log(filter.byContent);
         },
         setSort(sort) {
             this.sortBy = sort;
@@ -59,17 +59,17 @@ export default {
             this.loadEmails();
         },
         deleteEmail(id) {
-            confirm('Are you sure you want to delete?')
-                .then((willDelete) => {
-                    if (willDelete) {
-                        swal({ text: 'Your email has been deleted', buttons: false, timer: 1200 });
-                        emailService.remove(id)
-                            .then(() => {
-                                if (this.$route.params.emailId) this.$router.push(`./`);
-                                this.loadEmails();
-                            })
-                    }
-                });
+            // confirm('Are you sure you want to delete?')
+            // .then((willDelete) => {
+            // if (willDelete) {
+            emailService.remove(id)
+                .then(() => {
+                    if (this.$route.params.emailId) this.$router.push(`./`);
+                    this.loadEmails();
+                })
+
+
+            // });
 
         },
         markAsRead(email) {
@@ -109,11 +109,11 @@ export default {
         eventBus.$on('emailEreased', this.deleteEmail);
         eventBus.$on('readToggled', this.toggleRead);
 
-        if (this.$route.query.note) {
-            this.note = this.$route.query.note;
-            this.isComposing = true;
-            this.$router.push('/email/inbox')
-        }
+        // if (this.$route.query.note) {
+        //     this.note = this.$route.query.note;
+        //     this.isComposing = true;
+        //     this.$router.push('/email/inbox')
+        // }
 
     },
     components: {

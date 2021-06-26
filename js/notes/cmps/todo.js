@@ -3,12 +3,16 @@ import { eventBus } from "../../services/event-bus-service.js"
 export default {
     props: ['todoItem', 'note'],
     template: `
-    <section>
-        <textarea v-if="isBeingEdited" v-model="todoItem.txt"></textarea>
-        <h2 v-else @click="toggleTodo()" :class="{'done-todo':todoItem.isDone }" >{{todoItem.txt}}</h2>
-        <button v-if="!isBeingEdited" @click="isBeingEdited=true">Edit</button>
-        <button v-else @click="saveTodo()">Save</button>
-        <button @click="deleteTodo()">DELETE</button>
+    <section class="todo">
+        <div class="todo-text">
+            <textarea @blur="saveTodo()" v-if="isBeingEdited" v-model="todoItem.txt" ref="todo"></textarea>
+            <p v-else @click="toggleTodo()" :class="{'done-todo':todoItem.isDone }" >{{todoItem.txt}}</p>
+        </div>
+        <div class="todo-btns">
+            <button title="Edit Todo" class="edit" v-if="!isBeingEdited" @click="editTodo()"></button>
+            <button title="Save Todo" class="save" v-else @click="saveTodo()"></button>
+            <button title="Remove Todo" class="remove" @click="deleteTodo()"></button>
+        </div>
     </section>
     `,
     data() {
@@ -31,8 +35,12 @@ export default {
             this.isBeingEdited = false
             eventBus.$emit('saveNote', this.note)
         },
-        deleteTodo(){
+        deleteTodo() {
             eventBus.$emit('delete', this.todoItem.todoId)
+        },
+        editTodo() {
+            this.isBeingEdited = true
+            setTimeout(() => this.$refs.todo.focus())
         }
     },
 

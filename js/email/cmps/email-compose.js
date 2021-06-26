@@ -1,18 +1,20 @@
 // import { eventBus } from '../../../site-services/event-bus.js'
 import { emailService } from '../services/email-service.js'
+import { utilService } from '../../services/util-service.js'
 
 export default {
     props: ['replayEmail', 'note'],
     name: 'email-compose',
-    template: `<div class="email-compose">
-        <form @submit.prevent="emailSubmitted">
-            <button class="close-compose-email"  @click.prevent="composeClosed"><i class="ass-times">X</i> </button>
-            <h3 class="new-email-title">New Email</h3>
-            <input v-model="to" placeholder="to:">
-            <input v-model="subject" placeholder="subject:">
-            <textarea rows="12" cols="9" v-model="body" placeholder="your email here..."></textarea>
-            <button type="submit" class="email-submit-btn">Send<i class="ass-send"></i></button>
-        </form>
+    template: `
+        <div>
+            <form @submit.prevent="emailSubmitted">
+                <button  @click.prevent="composeClosed">X</button>
+                <h3>New Email</h3>
+                <input v-model="to" placeholder="to:">
+                <input v-model="subject" placeholder="subject:">
+                <textarea rows="12" cols="9" v-model="body" placeholder="your email here..."></textarea>
+                <button type="submit" class="email-submit-btn">Send</button>
+            </form>
         </div>`,
     data() {
         return {
@@ -31,12 +33,17 @@ export default {
         },
         emailSubmitted() {
             let newEmail = {
-                folder: 'sent', subject: this.subject, from: 'me', to: this.to,
-                body: this.body, isRead: false, sentAt: Date.now()
+                folder: 'sent',
+                subject: this.subject,
+                from: 'me',
+                to: this.to,
+                body: this.body,
+                isRead: false,
+                sentAt: Date.now(),
+                id: utilService.makeId()
             };
             emailService.save(newEmail)
                 .then(() => {
-                    swal({ text: 'Email Sent', buttons: false, timer: 1200 })
                     this.$emit('emailSaved');
                 })
         },

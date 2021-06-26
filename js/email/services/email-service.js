@@ -1,4 +1,5 @@
 import { storageService } from "../../services/async-storage-service.js";
+import { utilService } from "../../services/util-service.js"
 
 export const emailService = {
     query,
@@ -12,17 +13,160 @@ export const emailService = {
 }
 
 const EMAILS_KEY = 'emails'
+const gEmails = createEmails()
 
 function query() {
     return storageService.query(EMAILS_KEY)
-        .then(emails => {
-            if (!emails.length) {
-                emails = emailDB;
-                storageService.postMany(EMAILS_KEY, emails);
+        // .then(emails => {
+        //     if (!emails.length) {
+        //         emails = emailDB;
+        //         storageService.postMany(EMAILS_KEY, emails);
+        //     }
+        //     return emails;
+        // });
+}
+
+function createEmails(){
+    var emails = utilService.loadFromStorage(EMAILS_KEY)
+     if (!emails || !emails.length) {
+        emails = [
+            {
+                folder: 'sent',
+                subject: 'assassassass',
+                from: 'assassass',
+                to: 'me',
+                body: `assassassassass
+                assassvvassassass`,
+                isRead: false,
+                sentAt: Date.now(),
+                id: utilService.makeId()
+            },
+            {
+                folder: 'inbox',
+                subject: 'ass',
+                from: 'ass',
+                to: 'me',
+                body: `assassassass`,
+                isRead: false,
+                sentAt: 1614362113000,
+                id: utilService.makeId()
+            },
+        
+            {
+                folder: 'inbox',
+                subject: 'ass',
+                from: 'ass',
+                to: 'me',
+                body: `assassassassass`,
+                isRead: true,
+                sentAt: 1614193632740,
+                id: utilService.makeId()
+            },
+            {
+                folder: 'inbox',
+                subject: `ass‏`,
+                from: 'ass',
+                to: 'me',
+                body: `assass`,
+                isRead: true,
+                sentAt: 1612790413000,
+                id: utilService.makeId()
+            },
+            {
+                folder: 'inbox',
+                subject: 'ass',
+                from: 'ass',
+                to: 'me',
+                body: `
+                Hi ass ,
+              ass assassassassassassassassassassassassassass
+              ass
+              ass
+        
+              assass
+              ass
+        
+              ass
+              ass
+              assassass
+        
+              assassassassass
+            Sincerely,
+            ass` ,
+                isRead: true,
+                sentAt: 1611780545000,
+                id: utilService.makeId()
+            },
+            {
+                folder: 'sent',
+                subject: 'ass',
+                from: 'me',
+                to: 'ass',
+                body: `assassassass ass
+                
+                    -------------------------------------------------------------
+                    assass ass`,
+                isRead: true,
+                sentAt: 1614193632840,
+                id: utilService.makeId()
+            },
+            {
+                folder: 'inbox',
+                subject: 'assss',
+                from: 'ass',
+                to: 'me',
+                body: `ass ass ass ass ass`,
+                isRead: true,
+                sentAt: 1611515895000,
+                id: utilService.makeId()
+            },
+            {
+                folder: 'inbox',
+                subject: 'ass',
+                from: 'ass',
+                to: 'me',
+                body: `assassassassassassassassassassass`,
+                isRead: true,
+                sentAt: 1609277825000,
+                id: utilService.makeId()
+            },
+            {
+                folder: 'inbox',
+                subject: 'ass',
+                from: 'ass',
+                to: 'me',
+                body: `ass assassassassassvvvvvvvvv`,
+                isRead: true,
+                sentAt: 1597519698000,
+                id: utilService.makeId()
+            },
+            {
+                folder: 'inbox',
+                subject: 'assassassassassass',
+                from: 'ass',
+                to: 'me',
+                body: `ass
+                ass
+                assassassassassassass`,
+                isRead: true,
+                sentAt: 1551133930500,
+                id: utilService.makeId()
+            },
+            {
+                folder: 'sent',
+                subject: 'ass',
+                from: 'me',
+                to: 'Gali',
+                body: `assassassassassassassass
+                assass`,
+                isRead: true,
+                sentAt: 1614372914000,
+                id: utilService.makeId()
             }
-            return emails;
-        }
-        );
+        ]
+        utilService.saveToStorage(EMAILS_KEY, emails)
+     }
+     return emails
 }
 
 function getById(id) {
@@ -70,108 +214,138 @@ function sortBy(emails, sort) {
     else if (sort === 'name') return emails.sort((a, b) => a.from.localeCompare(b.from));
 }
 
-let emailDB = [
-    {
-        folder: 'inbox', subject: 'assassassass',
-        from: 'assassass', to: 'me',
-        body: `assassassassass
-        assassvvassassass`,
-        isRead: false, sentAt: Date.now(),
-        id: '15511339305941234174'
-    },
-    {
-        folder: 'inbox', subject: 'ass', from: 'ass', to: 'me',
-        body: `assassassass`,
-        isRead: false, sentAt: 1614362113000, id: '1614273355adfd'
-    },
+// let emailDB = [
+//     {
+//         folder: 'sent',
+//         subject: 'assassassass',
+//         from: 'assassass',
+//         to: 'me',
+//         body: `assassassassass
+//         assassvvassassass`,
+//         isRead: false,
+//         sentAt: Date.now(),
+//         id: utilService.makeId()
+//     },
+//     {
+//         folder: 'inbox',
+//         subject: 'ass',
+//         from: 'ass',
+//         to: 'me',
+//         body: `assassassass`,
+//         isRead: false,
+//         sentAt: 1614362113000,
+//         id: utilService.makeId()
+//     },
 
-    {
-        folder: 'inbox', subject: 'ass',
-        from: 'ass', to: 'me',
-        body: `assassassassass`,
-        isRead: true, sentAt: 1614193632740,
-        id: '15511339305941234567'
-    },
-    {
-        folder: 'inbox', subject: `ass‏
-    `, from: 'ass', to: 'me', body: `ass
-    ass
-    `, isRead: true, sentAt: 1612790413000, id: '1614172813000er'
-    },
-    {
-        folder: 'inbox', subject: 'ass', from: 'ass', to: 'me',
-        body: `
-        Hi ass ,
-      ass assassassassassassassassassassassassassass
-      ass
-      ass
+//     {
+//         folder: 'inbox',
+//         subject: 'ass',
+//         from: 'ass',
+//         to: 'me',
+//         body: `assassassassass`,
+//         isRead: true,
+//         sentAt: 1614193632740,
+//         id: utilService.makeId()
+//     },
+//     {
+//         folder: 'inbox',
+//         subject: `ass‏`,
+//         from: 'ass',
+//         to: 'me',
+//         body: `assass`,
+//         isRead: true,
+//         sentAt: 1612790413000,
+//         id: utilService.makeId()
+//     },
+//     {
+//         folder: 'inbox',
+//         subject: 'ass',
+//         from: 'ass',
+//         to: 'me',
+//         body: `
+//         Hi ass ,
+//       ass assassassassassassassassassassassassassass
+//       ass
+//       ass
 
-      assass
-      ass
+//       assass
+//       ass
 
-      ass
-      ass
-      assassass
+//       ass
+//       ass
+//       assassass
 
-      assassassassass
-    Sincerely,
-    ass` ,
-        isRead: true, sentAt: 1611780545000, id: '1611780545000aa'
-    },
-    {
-        folder: 'seassnt', subject: 'ass',
-        from: 'me', to: 'ass',
-        body: `assassassass ass
+//       assassassassass
+//     Sincerely,
+//     ass` ,
+//         isRead: true,
+//         sentAt: 1611780545000,
+//         id: utilService.makeId()
+//     },
+//     {
+//         folder: 'sent',
+//         subject: 'ass',
+//         from: 'me',
+//         to: 'ass',
+//         body: `assassassass ass
         
-            -------------------------------------------------------------
-            assass ass`,
-        isRead: true, sentAt: 1614193632840,
-        id: '15511339305941234598'
-    },
-    {
-        folder: 'inbox',
-        subject: 'assss',
-        from: 'ass', to: 'me',
-        body: `ass ass
-        ass ass ass  
-        `,
-        isRead: true, sentAt: 1611515895000,
-        id: '15511339308001234444'
-    },
-    {
-        folder: 'inbox',
-        subject: 'ass',
-        from: 'ass', to: 'me',
-        body: `ass
-        assassassassassassassassassass
-`,
-        isRead: true, sentAt: 1609277825000,
-        id: '15511339308001234567'
-    },
-    {
-        folder: 'inbox', subject: 'ass',
-        from: 'ass', to: 'me',
-        body: `ass assassassassassvvvvvvvvv"        
-`,
-        isRead: true, sentAt: 1597519698000,
-        id: '15511339307001234567'
-    },
-    {
-        folder: 'inbox', subject: 'assassassassassass',
-        from: 'ass', to: 'me',
-        body: `ass
-        ass
-        assassassassassassass`,
-        isRead: true, sentAt: 1551133930500,
-        id: '115511339305001234567'
-    },
-    {
-        folder: 'sent',
-        subject: 'ass',
-        from: 'me', to: 'Gali',
-        body: `assassassassassassassass
-        assass`,
-        isRead: true, sentAt: 1614372914000,
-        id: '15511339308031234567'
-    }
-]
+//             -------------------------------------------------------------
+//             assass ass`,
+//         isRead: true,
+//         sentAt: 1614193632840,
+//         id: utilService.makeId()
+//     },
+//     {
+//         folder: 'inbox',
+//         subject: 'assss',
+//         from: 'ass',
+//         to: 'me',
+//         body: `ass ass ass ass ass`,
+//         isRead: true,
+//         sentAt: 1611515895000,
+//         id: utilService.makeId()
+//     },
+//     {
+//         folder: 'inbox',
+//         subject: 'ass',
+//         from: 'ass',
+//         to: 'me',
+//         body: `assassassassassassassassassassass`,
+//         isRead: true,
+//         sentAt: 1609277825000,
+//         id: utilService.makeId()
+//     },
+//     {
+//         folder: 'inbox',
+//         subject: 'ass',
+//         from: 'ass',
+//         to: 'me',
+//         body: `ass assassassassassvvvvvvvvv`,
+//         isRead: true,
+//         sentAt: 1597519698000,
+//         id: utilService.makeId()
+//     },
+//     {
+//         folder: 'inbox',
+//         subject: 'assassassassassass',
+//         from: 'ass',
+//         to: 'me',
+//         body: `ass
+//         ass
+//         assassassassassassass`,
+//         isRead: true,
+//         sentAt: 1551133930500,
+//         id: utilService.makeId()
+//     },
+//     {
+//         folder: 'sent',
+//         subject: 'ass',
+//         from: 'me',
+//         to: 'Gali',
+//         body: `assassassassassassassass
+//         assass`,
+//         isRead: true,
+//         sentAt: 1614372914000,
+//         id: utilService.makeId()
+//     }
+// ]

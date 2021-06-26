@@ -1,6 +1,6 @@
 
 import { emailService } from '../services/email-service.js';
-import { eventBus } from '../../services/event-bus-service'
+import { eventBus } from '../../services/event-bus-service.js'
 export default {
     template: `<div v-if="email" class="email-details-container email-table-helper flex">
         <div class="email-details-info ">

@@ -1,3 +1,5 @@
+import { eventBus } from "../../services/event-bus-service.js"
+
 export default {
     name: 'email-filter',
     template: `<section class="email-filter-sort"> 

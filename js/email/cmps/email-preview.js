@@ -8,9 +8,12 @@ import { eventBus } from "../../services/event-bus-service.js"
 export default {
     props: ['email'],
     template: `
-    <h2>{{email.subject}}</h2>
-    <!-- <p>{{email.body}}</p> -->
-
+    <section>
+        <td>{{email.subject}}</td>
+        <!-- <h2></h2>
+        <p>{{email.body}}</p> -->
+        <button @click.stop="emailEreased(email.id)">Erase</button>
+    </section>
     `,
     data() {
         return {
@@ -30,7 +33,6 @@ export default {
         bodyPreview() {
             return this.email.body.substr(0, 25) + '...'
         },
-        //// some butuun
 
         emailDate() {
             let sentDate = new Date(this.email.sentAt).toString()

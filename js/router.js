@@ -2,11 +2,12 @@ import homePage from './pages/home-page.js';
 import aboutPage from './pages/about-page.js';
 import notesApp from './notes/pages/notes-app.js';
 import emailApp from './email/pages/email-app.js';
-import emailFolders from './email/cmps/email-folders.js';
-// import emailDetails from './email/pages/email-details.js';
+import emailList from './email/cmps/email-list.js';
+import emailDetails from './email/pages/email-details.js'
 import booksApp from './books/pages/book-app.js'
 import searchBooks from './books/pages/search-books.js';
 import bookDetails from './books/pages/book-details.js';
+import emailPreview from './email/cmps/email-preview.js';
 
 const routes = [
     {
@@ -22,13 +23,31 @@ const routes = [
         component: notesApp
     },
     {
-        path: '/email',
-        component: emailApp
+        path: '/email/',
+        component: emailApp,
+        children: [
+            {
+                path: ':folder',
+                component: emailList,
+            },
+            {
+                path: '',
+                component: emailList,
+            },
+            {
+                path: 'sent',
+                component: emailList
+            },
+            {
+                path: 'inbox',
+                component: emailList
+            }
+        ]
     },
-    // {
-    //     path: '/email/inbox',
-    //     component: emailFolders,
-    // },
+    {
+        path: '/email/:folder/:emailId',
+        component: emailDetails
+    },
     {
         path: '/books',
         component: booksApp

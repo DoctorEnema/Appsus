@@ -18,14 +18,15 @@ export default {
             const folder = this.$route.params.folder;
             if (!folder || folder === 'all') return this.emails;
 
-            let fileteredEmails = this.emails;
-            return fileteredEmails.filter(email => email.folder === folder)
+            let filteredEmails = this.emails;
+            return filteredEmails.filter(email => email.folder === folder)
         }
     },
     methods: {
         readEmail(email, id) {
             this.$emit('emailRead', email)
             this.$router.push('/email/' + this.$route.params.folder + '/' + id)
+            // this.$router.push(`/email/sent/${id}`)
         }
     },
     components: {
