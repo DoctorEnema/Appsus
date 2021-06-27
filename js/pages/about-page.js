@@ -13,14 +13,14 @@ export default{
     <h1 class="">The members </h1>
     <div class="team-info-container flex">
         <div class="team-member flex">
-        <a href="https://github.com/DoctorEnema" class=""><i class="ass-github"></i><img src="/img/meidan.jpeg" ></a>
+        <a href="https://github.com/DoctorEnema" class=""><img src="img/meidan.jpeg" ></a>
             <h2 class="team-title">Meidan Yona <a href="https://github.com/DoctorEnema" class=""><i class="ass-github"></i></a>
             </h2>
             <p>Israel based developer , a CSS  master and half of teg CATTUS template.</p>
             <p class="secondary-text"> Should really stop drinking coke zero and drink more water</p>
         </div>
         <div class="team-member flex">
-        <a href="https://github.com/OphirAdams" class=""><i class="ass-github"></i> <img src="/img/ophiri.jpeg" ></a>
+        <a href="https://github.com/OphirAdams" class=""><img src="img/ophiri.jpeg" ></a>
             <h2 class="team-title">Ophir Adam </h2>
             <p>Mongolia based developer and an okay person overall.</p>
             <p class="secondary-text">I ate 2 packges of cookies yesterday , not proud.  </p>
