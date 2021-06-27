@@ -10,12 +10,12 @@ export default {
     template: `
     <section>
         <email-filter @filterSet="setFilter" @sortSet="setSort"/>
-        <div class="main-email-container"> 
+        <div class="email-container"> 
             <aside class="email-aside">
-                <button class="compose-email-btn" @click="isComposing = !isComposing"><i :class="'ass'">Compose</i></button>
+                <button class="compose" @click="isComposing = !isComposing">Compose</button>
                 <email-folders :emails="emails"/>
             </aside>
-        <router-view :to="'/email'" @replayEmailSet="setReplyEmail" @emailRead="markAsRead" :emails="emailsToDisplay"/>
+            <router-view :to="'/email'" @replayEmailSet="setReplyEmail" @emailRead="markAsRead" :emails="emailsToDisplay"/>
         </div>
         <div v-if="isComposing">
             <email-compose @emailSaved="saveEmail" @composeClosed="closeCompose" :replayEmail="replayEmail" :note="note"/>
@@ -59,18 +59,11 @@ export default {
             this.loadEmails();
         },
         deleteEmail(id) {
-            // confirm('Are you sure you want to delete?')
-            // .then((willDelete) => {
-            // if (willDelete) {
             emailService.remove(id)
                 .then(() => {
                     if (this.$route.params.emailId) this.$router.push(`./`);
                     this.loadEmails();
                 })
-
-
-            // });
-
         },
         markAsRead(email) {
             email.isRead = true;

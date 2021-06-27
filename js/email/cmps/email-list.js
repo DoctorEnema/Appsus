@@ -4,14 +4,15 @@ import emailPreview from './email-preview.js'
 export default {
 
     props: ['emails'],
-    template: `<div class="email-table-container">
-        <table v-if="folderEmails" class="email-table">
-        <tr v-for="email in folderEmails" :key="email.id" :class="{read: email.isRead}" @click="readEmail(email, email.id)">
-            <email-preview :email="email"/>
-            </tr>
-            </table>
+    template: `
+        <section class="email-list-section" >
+            <ul class="email-list">
+                <li  v-for="email in folderEmails" :key="email.id" :class="{read: email.isRead}" @click="readEmail(email, email.id)">
+                    <email-preview :email="email"/>
+                </li>
+            </ul>
             <h4 v-if="!folderEmails.length">it feels empty... no emails here yet</h4>
-        </div>
+        </section>
             `,
     computed: {
         folderEmails() {

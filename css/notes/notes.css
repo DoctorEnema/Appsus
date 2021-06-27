@@ -6,3 +6,33 @@
 @import "./note-search.css";
 @import "./note-todo.css";
 @import "./todo.css";
+.notes-actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* padding: 0.3rem; */
+}
+
+.add-txt-note::before {
+    font-family: fa-regular, sans-serif;
+    content: '\f15c';
+    font-size: 3em
+}
+
+.add-img-note::before {
+    font-family: fa-regular, sans-serif;
+    content: '\f8c4';
+    font-size: 3em
+}
+
+.add-vid-note::before {
+    font-family: fa-regular, sans-serif;
+    content: '\f008';
+    font-size: 3em
+}
+
+.add-todo-note::before {
+    font-family: fa-regular, sans-serif;
+    content: '\f46d';
+    font-size: 3em
+}

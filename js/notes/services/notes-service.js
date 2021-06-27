@@ -6,12 +6,14 @@ const NOTES_KEY = 'notes'
 export const notesService = {
     // createImgNote,
     // createTextNote,
-    createNote,
     query,
     save,
     remove,
     addNote,
+    createTxtNote,
     createImgNote,
+    createTodoNote,
+    createVidNote,
 }
 
 const gNotes = createNotes()
@@ -28,7 +30,7 @@ function createNotes() {
                     txt: 'Wow'
                 },
                 id: utilService.makeId(),
-                color:''
+                color: ''
             },
             {
                 type: 'noteTxt',
@@ -38,7 +40,7 @@ function createNotes() {
                     txt: 'wiwa'
                 },
                 id: utilService.makeId(),
-                color:''
+                color: ''
             },
             {
                 type: 'noteImg',
@@ -48,7 +50,7 @@ function createNotes() {
                     url: 'https://lolisc.co.il/wp-content/uploads/2019/04/3_Yuumi_W1.jpg'
                 },
                 id: utilService.makeId(),
-                color:''
+                color: ''
             },
             {
                 type: 'noteVideo',
@@ -58,7 +60,7 @@ function createNotes() {
                     url: 'https://www.youtube.com/embed/2-kNs9vVgUo'
                 },
                 id: utilService.makeId(),
-                color:''
+                color: ''
             },
             {
                 type: 'noteTodo',
@@ -71,7 +73,7 @@ function createNotes() {
                     ]
                 },
                 id: utilService.makeId(),
-                color:''
+                color: ''
             }
         ]
         utilService.saveToStorage(NOTES_KEY, notes)
@@ -96,25 +98,56 @@ function addNote(note) {
 }
 
 
-function createNote() {
+function createTxtNote() {
     return {
         type: 'noteTxt',
+        isPinned: false,
         info: {
             title: 'New Note',
             txt: 'Double click to edit'
         },
         id: utilService.makeId(),
+        color: ''
     }
 }
 
 function createImgNote() {
     return {
         type: 'noteImg',
+        isPinned: false,
         info: {
             title: 'Edit to add Image!',
             url: '',
         },
-        id: utilService.makeId()
-
+        id: utilService.makeId(),
+        color: ''
     }
+}
+
+function createTodoNote() {
+    return {
+        type: 'noteTodo',
+        isPinned: false,
+        info: {
+            title: 'Add a Title!',
+            todos: []
+        },
+        id: utilService.makeId(),
+        color: ''
+    }
+
+}
+
+function createVidNote() {
+    return {
+        type: 'noteVideo',
+        isPinned: false,
+        info: {
+            title: 'Add a Title',
+            url: 'https://www.youtube.com/embed/5qap5aO4i9A'
+        },
+        id: utilService.makeId(),
+        color: ''
+    }
+
 }

@@ -41,13 +41,14 @@ const routes = [
             {
                 path: 'inbox',
                 component: emailList
-            }
-        ]
-    },
+            },
     {
         path: '/email/:folder/:emailId',
         component: emailDetails
     },
+        ]
+    },
+
     {
         path: '/books',
         component: booksApp

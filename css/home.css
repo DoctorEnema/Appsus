@@ -1,0 +1,41 @@
+.home img{
+    object-fit: cover;
+    width: 100%;
+    width: 20rem;
+    position: absolute;
+    bottom: -19rem;
+    right: 20rem;
+    z-index: -1;
+}
+
+
+/* .picker {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 20rem 20rem;
+    border: 1px solid black;
+}
+
+.go-to-notes {
+    border-bottom:1px solid black;
+    border-right: 1px solid black;
+}
+
+.go-to-email {
+    border-bottom:1px solid black;
+    border-left: 1px solid black;
+}
+
+.go-to-about {
+    border-top:1px solid black;
+    border-right: 1px solid black;
+}
+
+.go-to-books {
+    border-top:1px solid black;
+    border-left: 1px solid black;
+} */
+
+.home{
+    text-align: center;
+}

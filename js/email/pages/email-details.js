@@ -2,21 +2,22 @@
 import { emailService } from '../services/email-service.js';
 import { eventBus } from '../../services/event-bus-service.js'
 export default {
-    template: `<div v-if="email" class="email-details-container email-table-helper flex">
-        <div class="email-details-info ">
-        <h3>{{email.subject}}</h3>
-        <p>From: {{email.from}}</p>
-        <p>To: {{email.to}}</p>
-    </div>
-    <pre><p class="email-details-body">{{email.body}}</p></pre>
-<div class="email-actions-container flex">
-    <button @click="setReplayEmail(email)"><i class="ass-reply"></i></button>
-        <button @click="saveAsNote(email.body)"><i class="ass-sticky-note "></i></button>  
-        <button @click="emailEreased(email.id)">
-        <i class="ass-trash" ></i></button>
-    </div>
-            <router-link :to="'./'"><i class="inbox-redirecter ass"></i></router-link>   
-    </div>`,
+    template: `
+    <section v-if="email" class="email-details">
+        <div class="email-actions">
+            <router-link title="Back" class="back" :to="'./'"></router-link>   
+            <button title="Reply" class="reply" @click="setReplayEmail(email)"></button>
+            <button title="Save as Note" class="save-as-note" @click="saveAsNote(email.body)"></button>  
+            <button title="Delete Email" class="remove" @click="emailEreased(email.id)"></button>
+        </div>
+        <div class="email-details-info">
+            <h2>{{email.subject}}</h2>
+            <p>From: {{email.from}}</p>
+            <p>To: {{email.to}}</p>
+        </div>
+        <p class="email-details-body">{{email.body}}</p>
+
+    </section>`,
     data() {
         return {
             email: null
@@ -38,6 +39,7 @@ export default {
         },
         emailEreased(id) {
             eventBus.$emit('emailEreased', id)
+            eventBus.$emit('show-msg', { type: 'success', txt:'Erased!' })
         }
     },
     created() {

@@ -2,20 +2,22 @@ import { eventBus } from "../../services/event-bus-service.js"
 
 export default {
     name: 'email-filter',
-    template: `<section class="email-filter-sort"> 
-            <input @input="setFilter" type="text" placeholder="search..." v-model="filterBy.byContent" >
-            <select @change="setFilter" v-model="filterBy.byStatus">
-                <option value="">All</option>
-                <option value="read">Read</option>
-                <option value="unread">Unread</option>
-            </select>
+    template: `
+    <section class="email-filters"> 
+            <input class="email-search" @input="setFilter" type="text" placeholder="Search..." v-model="filterBy.byContent" >
+            <div class="email-dropdowns">
+                <select @change="setFilter" v-model="filterBy.byStatus">
+                    <option value="">All</option>
+                    <option value="read">Read</option>
+                    <option value="unread">Unread</option>
+                </select>
 
-            <select @change="setSort" v-model="sortBy">
-                <option value="date">Date</option>
-                <option value="name">Sender</option>
-            </select>
-
-        </section>`,
+                <select @change="setSort" v-model="sortBy">
+                    <option value="date">Date</option>
+                    <option value="name">Sender</option>
+                </select>
+            </div>
+    </section>`,
     data() {
         return {
             filterBy: {

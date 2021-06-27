@@ -1,6 +1,6 @@
 footer {
     display: flex;
     justify-content: center;
-    padding: 2rem;
-    background-color: indianred;
+    padding: 1rem;
+    background-color: #8c9cf3;
 }

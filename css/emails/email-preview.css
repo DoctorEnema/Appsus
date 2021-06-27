@@ -1,0 +1,59 @@
+.email-preview {
+    display: flex;
+    background-color: inherit;
+    border-radius: 0.3rem;
+}
+
+.email-info {
+    display: flex;
+    padding: 1rem;
+    cursor: pointer;
+    gap: 0.2rem;
+    position: relative;
+    flex: 1;
+}
+
+.email-info .from {
+    width: 8rem;
+}
+
+.email-date {
+    position: absolute;
+    right: 0.5rem;
+}
+
+.email-btns {
+    display: flex;
+    position: absolute;
+    right: 0;
+    opacity: 0;
+    background-color: whitesmoke;
+    padding: 1rem;
+    padding-inline-start:2rem
+}
+
+.email-btns>*{
+    border-radius: 50%;
+    transition: 0.4s;
+}
+
+.email-btns>*:hover {
+    background-color: inherit;
+    filter: brightness(85%);
+}
+
+.email-preview:hover>.email-btns {
+    opacity: 1;
+}
+
+.toggle-read::before {
+    font-family: fa-regular, sans-serif;
+    content: '\f2b6'
+}
+
+.read{
+    font-weight: 900;
+    border-radius: 0.3rem;
+    filter: brightness(95%);
+    background-color: whitesmoke;
+}

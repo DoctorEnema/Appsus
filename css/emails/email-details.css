@@ -1,0 +1,49 @@
+.email-details{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-inline-start: 4rem;
+    padding-top: 2rem;
+    width: 100%;
+}
+
+.email-details-info{
+    display: flex;
+    flex-direction: column;
+    gap:0.5rem
+}
+
+.email-actions{
+    border-bottom: 1px solid lightgray;
+
+}
+
+.email-actions>*{
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.email-actions>*:hover{
+    background-color: whitesmoke;
+    filter: brightness(85%);
+}
+
+.back::before{
+    font-family: fa-regular, sans sans-serif;
+    content: '\f060';
+    padding-inline-end: 0.5rem;
+}
+
+.reply::before{
+    font-family: fa-regular, sans sans-serif;
+    content: '\f3e5';
+    padding-inline-end: 0.5rem;
+}
+
+.save-as-note::before{
+    font-family: fa-regular, sans sans-serif;
+    content: '\f249';
+    padding-inline-end: 0.5rem;
+}
+
+

@@ -4,3 +4,38 @@
 @import "./email-folder.css";
 @import "./email-list.css";
 @import "./email-preview.css";
+.email-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.email-list-section {
+    width: 100%;
+}
+
+.compose {
+    display: flex;
+    border-top-right-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem ;
+    background-color: #546bf3;
+    margin-bottom: 0.4rem;
+    margin-top:1rem;
+    box-shadow: 1px 1px 1px #A9ABA6;
+    padding-inline-start: 0.8rem;
+    padding-inline-end: 3rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    align-items: center;
+}
+
+.compose::before {
+    font-family: fa-regular, sans sans-serif;
+    content: '\f067';
+    padding-inline-end: 1rem;
+    font-size: 1.8rem;
+    color: #f3c942;
+}
+
+.compose:hover {
+    color: #f3c942;
+}

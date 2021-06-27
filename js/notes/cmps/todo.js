@@ -34,9 +34,11 @@ export default {
         saveTodo() {
             this.isBeingEdited = false
             eventBus.$emit('saveNote', this.note)
+            eventBus.$emit('show-msg', { type: 'success', txt:'Saved!' })
         },
         deleteTodo() {
             eventBus.$emit('delete', this.todoItem.todoId)
+            eventBus.$emit('show-msg', { type: 'success', txt:'Removed!' })
         },
         editTodo() {
             this.isBeingEdited = true

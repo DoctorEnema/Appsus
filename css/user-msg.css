@@ -1,0 +1,30 @@
+.user-msg{
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    padding-left: 2rem;
+    border-radius: 10rem;
+    z-index: 1;
+}
+
+.success{
+    background-color: lightgreen;
+    background-image: url(/img/yuumi-head-tilt.png);
+    padding: 1.2rem;
+    padding-left: 3.2rem;
+    background-size: 3.1rem;
+    background-repeat: no-repeat;
+    background-position: left 0.5rem;
+
+}
+
+.fail{
+    background-color: red;
+    background-image: url(/img/yuumi-lost.png);
+    padding: 1.2rem;
+    padding-left: 3.2rem;
+    background-size: 3.1rem;
+    background-repeat: no-repeat;
+    background-position: left 0.5rem;
+}
+

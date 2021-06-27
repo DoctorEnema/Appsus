@@ -1,0 +1,44 @@
+.email-folders {
+    display: flex;
+    /* flex-direction: column; */
+    flex-direction: row;
+    gap: 0.2rem;
+}
+
+.email-folders>* {
+    padding: 0.5rem 0;
+    padding-inline-start: 1rem;
+    padding-inline-end: 3rem;
+    background-color: #546bf3;
+    border-radius: 5rem;
+    text-align: start;
+}
+
+.email-folders>*:hover {
+    cursor: pointer;
+    color: #f3c942;
+}
+
+.active-folder {
+    box-shadow: inset -30px 0px 0px 0px #f3c942;
+    transition: box-shadow 0.4s;
+    transition-timing-function: cubic-bezier(.88, .74, .15, 1.53);
+}
+
+.inbox::before {
+    font-family: fa-regular, sans sans-serif;
+    content: '\f01c';
+    padding-inline-end: 0.5rem;
+}
+
+.sent::before {
+    font-family: fa-regular, sans sans-serif;
+    content: '\f1d8';
+    padding-inline-end: 0.5rem;
+}
+
+.all::before {
+    font-family: fa-regular, sans sans-serif;
+    content: '\f660';
+    padding-inline-end: 0.5rem;
+}

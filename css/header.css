@@ -1,6 +1,83 @@
 header {
     display: flex;
     justify-content: space-between;
-    padding: 2rem;
-    background-color: hotpink;
+    align-items: center;
+    font-family: cursive;
+}
+
+.all-header{
+    background-color: #546bf3;
+    width: 100%;
+}
+
+nav {
+    display: flex;
+}
+
+nav>* {
+    padding: 0.5rem 1rem;
+    border-inline-start: 1px solid black;
+}
+
+nav:first-of-type{
+    border-inline-end: 1px solid black;
+}
+
+nav>*:hover {
+    color: #f3c942;
+}
+
+.logo-all {
+    display: flex;
+}
+
+.yuumi-head {
+    padding: 1.2rem 2rem;
+    background-image: url(/img/yuumi-head3.png);
+    background-size: 3.1rem;
+    background-repeat: no-repeat;
+    background-position: center -.8rem;
+}
+
+.yuumi-head:hover {
+    background-image: url(/img/yuumi-head-tilt.png);
+}
+
+
+
+
+
+.head-sad {
+    padding: 2.7rem 4rem;
+    background-image: url(/img/yuumisbooks_lost.png);
+    background-size: 6.2rem;
+    background-repeat: no-repeat;
+    background-position: center -.8rem;
+}
+
+.head-search {
+    padding: 2.7rem 4rem;
+    background-image: url(/img/yuumisbooks_search.png);
+    background-size: 6.2rem;
+    background-repeat: no-repeat;
+    background-position: center -.8rem;
+}
+
+/* .active-link {
+    box-shadow: inset 0px -6px 0px 0px #f3c942;
+    color: #f3c942;
+    transition: 0.4s;
+    transition-timing-function: cubic-bezier(.88, .74, .15, 1.53);
+} */
+
+.router-link-exact-active {
+    box-shadow: inset 0px -6px 0px 0px #f3c942;
+    color: #f3c942;
+    border-inline-start: 1px solid black;
+    background-image: url(/img/yuumi2.png);
+    background-position: center 2.5rem;
+    background-size: 3rem;
+    background-repeat: no-repeat;
+    transition: 0.4s;
+    transition-timing-function: cubic-bezier(.88, .74, .15, 1.53);
 }

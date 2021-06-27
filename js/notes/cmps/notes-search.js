@@ -1,9 +1,6 @@
 export default{
     template: `
-    <section>
-        <label>Search:</label>
-        <input v-model="filterBy.title" type="text" @input="filter" placeholder="Search...">
-    </section>
+        <input class="note-search" v-model="filterBy.title" type="text" @input="filter" placeholder="Search...">
     `,
     data() {
         return {

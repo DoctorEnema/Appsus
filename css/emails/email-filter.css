@@ -1,0 +1,23 @@
+.email-filters{
+    display: flex;
+}
+
+.email-search{
+    margin: 0.2rem;
+    padding: 0.6rem;
+    border-radius: 1rem;
+    border: none;
+    font-size: 1.3em;
+    background-color: rgb(171, 185, 247);
+    flex: 1;
+    box-shadow: 1px 1px 1px #A9ABA6;
+}
+
+.email-dropdowns{
+    margin: 0.2rem;
+}
+
+.email-dropdowns>*{
+    padding: 0.5rem;
+    margin:  0 0.3rem;
+}

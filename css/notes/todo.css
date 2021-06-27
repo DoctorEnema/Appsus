@@ -17,3 +17,7 @@
 .todo:hover>.todo-btns {
     opacity: 1;
 }
+
+.add-todo{
+    font-size: 1.5em;
+}

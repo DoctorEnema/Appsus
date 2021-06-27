@@ -4,6 +4,8 @@
 @import "./emails/emails.css";
 @import "./books/books.css";
 @import "./user-msg.css";
+@import "./home.css";
+@import "./about.css";
 @font-face {
     font-family: fa-regular;
     src: url(../fonts/fa-regular-400.ttf);
@@ -37,11 +39,6 @@ button {
     cursor: pointer;
     border: none;
     background-color: transparent;
-    color: #a8a69b;
-}
-
-button:hover {
-    color: white ;
 }
 
 .main {
@@ -52,6 +49,53 @@ button:hover {
 }
 
 .main-content {
-    background-color: khaki;
+    position: relative;
+    border-inline-end: 1px solid #546bf3;
+    border-inline-start: 1px solid #546bf3;
     flex: 1;
+}
+
+@media (min-width: 820px) {
+    .main-content {
+        width: 820px;
+        margin: 0 auto;
+    }
+    nav>* {
+        padding: 2rem;
+        border-inline-start: 1px solid black;
+        background-image: url(/img/yuumi2.png);
+        background-position: center 5rem;
+        background-size: 3rem;
+        background-repeat: no-repeat;
+    }
+    .yuumi-head {
+        padding: 2.7rem 4rem;
+        background-image: url(/img/yuumi-head3.png);
+        background-size: 6.2rem;
+        background-repeat: no-repeat;
+        background-position: center -.8rem;
+    }
+    .notes-list ul {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+    .notes-actions {
+        flex-direction: row;
+    }
+    .email-folders {
+        flex-direction: column;
+    }
+    .email-folders>* {
+        border-radius: unset;
+        border-top-right-radius: 5rem;
+        border-bottom-right-radius: 5rem;
+    }
+    .email-container {
+        flex-direction: row;
+    }
+}
+
+@media (min-width: 980px) {
+    .main-content {
+        width: 980px;
+    }
 }

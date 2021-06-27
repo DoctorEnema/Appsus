@@ -21,7 +21,7 @@ export default {
             </div>
             <textarea @blur="onAddTodo()" v-if="addingTodo" v-model="newTodo.txt" ref="noteTodo"></textarea>
             <button title="Save Note" class="save" v-if="addingTodo" @click="onAddTodo()"></button>
-            <button title="Add Todo" class="add" v-else @click="addTodo()"></button>
+            <button title="Add Todo" class="add add-todo" v-else @click="addTodo()"></button>
             <div class="note-btns">
                     <button class="pin" @click="togglePinNote()"></button>
                     <button class="color">
@@ -47,12 +47,17 @@ export default {
         }
     },
     methods: {
-        addTodo(){
-            this.addingTodo=true
+        addTodo() {
+            this.addingTodo = true
             setTimeout(() => this.$refs.noteTodo.focus())
         },
         onAddTodo() {
-            if(!this.newTodo.txt) console.log('Add Error');
+            if (!this.newTodo.txt) {
+                console.log('Add Error');
+                eventBus.$emit('show-msg', { type: 'fail', txt:'Empty Todo' })
+                return
+            }
+
             this.note.info.todos.push(this.newTodo)
             this.addingTodo = false
             this.newTodo = {
@@ -61,18 +66,22 @@ export default {
                 todoId: utilService.makeId()
             }
             eventBus.$emit('saveNote', this.note)
+            eventBus.$emit('show-msg', { type: 'success', txt:'Saved!' })
         },
         togglePinNote() {
             this.note.isPinned = !this.note.isPinned
             eventBus.$emit('saveNote', this.note)
+            eventBus.$emit('show-msg', { type: 'success', txt:'Pinned!' })
         },
         updateNote() {
             eventBus.$emit('saveNote', this.note)
             this.title.isBeingEdited = false
             this.addingTodo = false
+            eventBus.$emit('show-msg', { type: 'success', txt:'Saved!' })
         },
         removeNote() {
             eventBus.$emit('removeNote', this.note.id)
+            eventBus.$emit('show-msg', { type: 'success', txt:'Removed!' })
         },
         editTitle() {
             this.title.isBeingEdited = true

@@ -1,10 +1,22 @@
 .note-preview {
     min-height: 15rem;
-    background-color: cornsilk;
+    background-color: rgb(255, 248, 181);
     display: grid;
     grid-template-rows: auto 1fr;
     gap: 0.2rem;
     font-family: cursive;
+    border-radius: 0.3rem;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.34);
+    padding: 0.5rem;
+}
+
+.note-preview button {
+    color: rgb(87, 85, 85);
+    transition: filter 0.4s
+}
+
+.note-preview button:hover {
+    filter: brightness(200%);
 }
 
 .note-preview:hover>.note-btns {
@@ -84,21 +96,22 @@
     width: 2rem;
     opacity: 0;
 }
+
 .color input[type=color]:hover {
     cursor: pointer;
 }
 
 .color::before {
     font-family: fa-regular, sans-serif;
-    content: '\f53f'
+    content: '\f53f';
 }
 
-.remove::before{
+.remove::before {
     font-family: fa-regular, sans-serif;
-    content:'\f00d';
+    content: '\f1f8';
 }
 
-.edit::before{
+.edit::before {
     font-family: fa-regular, sans-serif;
-    content:'\f044';
+    content: '\f044';
 }

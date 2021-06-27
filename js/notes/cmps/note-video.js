@@ -42,13 +42,16 @@ export default {
             eventBus.$emit('saveNote', this.note)
             this.title.isBeingEdited = false
             this.vid.isBeingEdited = false
+            eventBus.$emit('show-msg', { type: 'success', txt:'Saved!' })
         },
         removeNote() {
             eventBus.$emit('removeNote', this.note.id)
+            eventBus.$emit('show-msg', { type: 'success', txt:'Removed!' })
         },
         togglePinNote() {
             this.note.isPinned = !this.note.isPinned
             eventBus.$emit('saveNote', this.note)
+            eventBus.$emit('show-msg', { type: 'success', txt:'Pinned!' })
         },
         editMode() {
             this.title.isBeingEdited = true

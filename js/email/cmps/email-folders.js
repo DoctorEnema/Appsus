@@ -3,20 +3,12 @@ export default {
     name: 'email-folders',
     template: `
     <section class="email-folders">
-    <div class="folder" :class="{'active-folder': activeFolder === 'inbox'}" @click="setActiveFolder('inbox')">
-    <i class="ass-inbox"></i> Inbox <span v-if="unreadCount" class="unread-count"> ({{unreadCount}}) </span>
-    </div>
-    <div class="folder" :class="{'active-folder': activeFolder === 'sent'}" @click="setActiveFolder('sent')"><i class="far fa-paper-plane"></i> Sent</div>
-    <div class="folder" :class="{'active-folder': activeFolder === 'all'}" @click="setActiveFolder('all')">All</div>
-    
-    <!-- TODO: MORE FOLDERS- DRAFTS, TRASH, IMPORTANT -->
-
-    <!-- <div class="folder" :class="{'active-folder': activeFolder === 'drafts'}" @click="setActiveFolder('drafts')">Drafts</div> -->
-    
-    <!-- <div class="folder" :class="{'active-folder': activeFolder === 'important'}" @click="setActiveFolder('important')>Important</div> -->
-
-    <!-- <div class="folder" :class="{'active-folder': activeFolder === 'trash'}" @click="setActiveFolder('trash')>Trash</div> -->
-</section>`,
+        <button class="inbox" :class="{'active-folder': activeFolder === 'inbox'}" @click="setActiveFolder('inbox')">
+        Inbox <span v-if="unreadCount" class="unread-count"> ({{unreadCount}}) </span>
+        </button>
+        <button class="sent" :class="{'active-folder': activeFolder === 'sent'}" @click="setActiveFolder('sent')">Sent</button>
+        <button class="all" :class="{'active-folder': activeFolder === 'all'}" @click="setActiveFolder('all')">All</button>
+    </section>`,
     data() {
         return {
             activeFolder: 'inbox'
@@ -26,10 +18,6 @@ export default {
         setActiveFolder(folder) {
             this.$router.push(
                 { path: `/email/${folder}/`}).catch(err => {
-                    // if (err.name !== 'NavigationDuplicated'
-                    //     && !err.message.includes('Avoided redundant navigation to current location')) {
-                    //     logError(err);
-                    // }
                 });
             this.activeFolder = folder;
         }

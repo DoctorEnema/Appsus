@@ -10,9 +10,15 @@ export default {
     },
     template: `
         <section>
-            <notes-search @filtered="setFilter"></notes-search>
-            <button @click="createTxtNote()">Add New Note</button>
-            <button @click="createImg()">Img Note</button>
+            <div class="notes-actions">
+                    <notes-search @filtered="setFilter"></notes-search>
+                <div>
+                    <button title="Add New Note" class="add-txt-note" @click="createTxtNote()"></button>
+                    <button title="Add Image Note" class="add-img-note" @click="createImgNote()"></button>
+                    <button title="Add Video Note" class="add-vid-note" @click="createVidNote()"></button>
+                    <button title="Add Todo Note" class="add-todo-note" @click="createTodoNote()"></button>
+                </div>
+            </div>
             <notes-list @reloadNotes="loadNotes()" :notes="notesToShow" />
         </section>
     `,
@@ -29,12 +35,22 @@ export default {
                 .then(this.sortByPinned)
         },
         createTxtNote() {
-            const note = notesService.createNote()
+            const note = notesService.createTxtNote()
             notesService.addNote(note)
                 .then(() => this.loadNotes())
         },
-        createImg() {
+        createImgNote() {
             const note = notesService.createImgNote()
+            notesService.addNote(note)
+                .then(() => this.loadNotes())
+        },
+        createVidNote() {
+            const note = notesService.createVidNote()
+            notesService.addNote(note)
+                .then(() => this.loadNotes())
+        },
+        createTodoNote() {
+            const note = notesService.createTodoNote()
             notesService.addNote(note)
                 .then(() => this.loadNotes())
         },

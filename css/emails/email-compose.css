@@ -1,0 +1,84 @@
+.compose-email{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    background-color: #546bf3;
+    flex-direction: column;
+    gap: 0.2rem;
+    border-top-left-radius: 1rem;
+    box-shadow: -2px 1px 1px #706d6d;
+    color: white;
+}
+
+.compose-header{
+    background-color: #546bf3;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5rem;
+    padding: 0.5rem;
+}
+
+.email-people{
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.email-people>*{
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+    margin: 0.2rem;
+    border: none;
+}
+
+.email-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.email-form textarea{
+    width: 30rem;
+    height: 20rem;
+    border-radius: 0.3rem;
+    margin: 0.2rem;
+    border: none;
+}
+
+.email-submit-btn{
+    color: white;
+    padding: 1em 1.7em;
+    background-color: rgb(107, 167, 245);
+    border-radius: 0.3rem;
+    margin: 0.2rem;
+}
+
+.email-submit-btn:hover{
+    color: #f3c942
+}
+
+.email-submit-btn::before {
+    font-family: fa-regular, sans sans-serif;
+    content: '\f1d8';
+    padding-inline-end: 0.5rem;
+}
+
+.close-composed::before{
+    font-family: fa-regular, sans sans-serif;
+    content: '\f00d';
+    padding-inline-end: 0.5rem;
+}
+
+.compose-bottom{
+    display: flex;
+    justify-content: space-between;
+}
+
+.head-writing {
+    padding: 0 2rem;
+    background-image: url(/img/yuumisbooks_write.png);
+    background-size: 4rem;
+    background-repeat: no-repeat;
+    background-position: right -0.5rem ;
+}
+
