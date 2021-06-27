@@ -68,8 +68,8 @@ function createNotes() {
                 info: {
                     title: 'To do!',
                     todos: [
-                        { txt: 'Eat ass', isDone: false, todoId: utilService.makeId() },
-                        { txt: 'Chew cum', isDone: false, todoId: utilService.makeId() }
+                        { txt: 'Kick ass', isDone: false, todoId: utilService.makeId() },
+                        { txt: 'Chew gum', isDone: false, todoId: utilService.makeId() }
                     ]
                 },
                 id: utilService.makeId(),
